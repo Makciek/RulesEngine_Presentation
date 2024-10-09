@@ -9,7 +9,7 @@ public static class BoilerplateExtensions
         var result = await engine.ExecuteAllRulesAsync(workflowName, parameters);
 
         var success = result.TrueForAll(r => r.IsSuccess);
-        var error = success ? null : string.Join("; ", result.Select(r => r.Rule.ErrorMessage ?? r.ExceptionMessage));
+        var error = success ? null : string.Join("; ", result.Where(r => !r.IsSuccess).Select(r => r.Rule.ErrorMessage ?? r.ExceptionMessage));
 
         return (success, error);
     }
