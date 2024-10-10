@@ -16,7 +16,7 @@ public class Example4_CustomActions
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(overtime < 1 ? "Go back to work!!!" : "Take it easy, just 3 hours left!");
             Console.ForegroundColor = ConsoleColor.White;
-            return new ValueTask<object>(Task.CompletedTask);
+            return new ValueTask<object>("This one failed");
         }
     }
 
